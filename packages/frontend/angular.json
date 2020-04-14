@@ -1,0 +1,85 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "hlf-explorer": {
+            "root": "src",
+            "sourceRoot": "src",
+            "projectType": "application",
+            "prefix": "app",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "styleext": "scss"
+                }
+            },
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "build/hlf-explorer",
+                        "index": "index.html",
+                        "main": "main.ts",
+                        "polyfills": "polyfills.ts",
+                        "tsConfig": "tsconfig.json",
+                        "assets": [
+                            {
+                                "glob": "**/*",
+                                "input": "htdocs",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [
+                            "node_modules/csshake/dist/csshake-horizontal.css",
+                            "node_modules/@fortawesome/fontawesome-free/css/all.css",
+
+                            "src/styles/mat.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/css-element-queries/src/ResizeSensor.js",
+                            "node_modules/interactjs/dist/interact.min.js",
+                            "node_modules/numeral/numeral.js",
+                            "node_modules/numeral/locales/ru.js",
+                            "node_modules/moment/moment.js",
+                            "node_modules/moment/locale/ru.js",
+                            "node_modules/hammerjs/hammer.js",
+                            "node_modules/messageformat/messageformat.js",
+                            "node_modules/chart.js/dist/Chart.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "optimization": true,
+                            "outputHashing": "none",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": false,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "5mb",
+                                    "maximumError": "10mb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "hlf-explorer:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "hlf-explorer:build:production"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

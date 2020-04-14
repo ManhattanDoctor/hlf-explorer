@@ -1,0 +1,66 @@
+<mat-sidenav-container class="background-body w-100 h-100 flex-grow-1">
+
+    <div class="d-flex justify-content-center w-100 h-100 flex-grow-1">
+
+        <div class="container-fluid h-100 no-gutters pl-0 pr-0 d-flex flex-column">
+
+            <div class="row background border-bottom align-items-center no-gutters justify-content-center mb-3 flex-shrink-0">
+
+                <nav class="col-10 d-flex align-items-center flex-shrink-0">
+
+                    <p class="mouse-active" (click)="navigateToDefault()">
+                        <span class="fas fa-dice-d6 fa-2x mr-2"></span>
+                        <span class="mat-headline">HLF Scanner</span>
+                    </p>
+
+                    <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+
+                        <ng-container *ngFor="let item of menu.items">
+                            <button mat-button (click)="item.select(item)" [ngClass]="{'text-primary text-underline' : item.isActive}">
+                                <span [innerHTML]="item.name"></span>
+                            </button>
+                        </ng-container>
+
+                    </div>
+
+                    <div class="d-flex flex-shrink-0 align-items-center">
+
+                        <button class="mr-2" mat-stroked-button (click)="toggleNotifications()" *ngIf="isHasNotifications">
+                            <span class="fa fa-bell"></span>
+                        </button>
+                
+                        <language-selector class="mr-2" [isNeedLabel]="false"></language-selector>
+                        
+                        <button mat-icon-button vi-theme-toggle *ngIf="theme.themes.length > 1">
+                            <span class="fa fa-adjust"></span>
+                        </button>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+            <div class="row no-gutters justify-content-center flex-grow-1">
+                <div class="col-10">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+
+            <div class="row flex-shrink-0 background border-top align-items-center justify-content-center no-gutters p-3 mt-4">
+                <p class="col-10 text-center" [innerHTML]="'general.footer' | viTranslate"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <mat-sidenav class="sidenav-right no-scroll background" mode="over" position="end" [opened]="isShowNotifications"
+        (openedChange)="isShowNotifications = $event">
+        <p class="p-2 mat-title text-one-line flex-shrink-0 text-center border-bottom mouse-inactive" [innerHTML]="'general.notifications' | viTranslate"></p>
+        <div class="flex-grow-1 vertical-scroll-only background-body">
+            <notification class="border-bottom" *ngFor="let item of notificationItems" [config]="item" ></notification>
+        </div>
+    </mat-sidenav>
+
+</mat-sidenav-container>

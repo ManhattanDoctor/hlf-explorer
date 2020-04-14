@@ -1,0 +1,13 @@
+{
+    "name": "@hlf-explorer/common",
+    "version": "1.0.0",
+    "description": "",
+    "main": "",
+    "author": "Renat Gubaev",
+    "license": "ISC",
+    "dependencies": {
+        "@ts-core/common": "^1.0.77",
+        "@ts-core/blockchain-fabric": "^1.0.11"
+    },
+    "devDependencies": {}
+}

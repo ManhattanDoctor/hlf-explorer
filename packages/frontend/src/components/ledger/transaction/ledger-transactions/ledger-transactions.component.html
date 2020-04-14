@@ -1,0 +1,23 @@
+<div class="d-flex border-bottom align-items-center px-3">
+
+    <span class="fas fa-copy ml-2 mr-2 my-1"></span>
+    
+    <p class="mat-title flex-grow-1 text-one-line mouse-inactive">
+        <span [innerHTML]="'ledger.transactions' | viTranslate"></span>
+    </p>
+
+    <mat-paginator [length]="transactions?.total" [pageSize]="transactions?.pageSize" [hidePageSize]="true"
+        (page)="transactions.pageIndex = $event.pageIndex"></mat-paginator>
+
+    <button class="flex-shrink-0" mat-icon-button (click)="transactions.reload()"
+        [matTooltip]="'general.refresh' | viTranslate" [disabled]="transactions?.isLoading">
+        <span class="fas fa-sync" [class.fa-spin]="transactions?.isLoading"></span>
+    </button>
+
+</div>
+
+<div class="mat-nav-list">
+    <ledger-transaction-last [transaction]="item" *ngFor="let item of transactions?.collection; trackBy: transactions?.trackByFn; last as isLast"
+        class="mat-list-item mouse-active p-3 border-bottom" [class.border-bottom-0]="isLast" (click)="router.transactionOpen(item)"></ledger-transaction-last>
+</div>
+

@@ -1,0 +1,23 @@
+{
+    "name": "SDEX-Gate",
+    "short_name": "SDEX",
+    "description": "",
+    "theme_color": "#5E35B1",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "http://coin.monitor/?utm_source=web_app_manifest",
+	"icons":
+	[
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		}
+	]
+}
