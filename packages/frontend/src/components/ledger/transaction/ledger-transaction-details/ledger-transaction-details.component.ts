@@ -20,6 +20,8 @@ export class LedgerTransactionDetailsComponent extends IWindowContent {
     //
     //--------------------------------------------------------------------------
 
+    public wrapper: LedgerBlockTransactionWrapper;
+
     public isValid: boolean;
     public validationCode: string;
 
@@ -58,9 +60,8 @@ export class LedgerTransactionDetailsComponent extends IWindowContent {
     private commitTransactionProperties(): void {
         let value = null;
 
+        let transaction = this.wrapper = new LedgerBlockTransactionWrapper(this.transaction);
 
-        let transaction = new LedgerBlockTransactionWrapper(this.transaction);
-        
         value = transaction.requestData;
         if (value !== this.request) {
             this.request = value;

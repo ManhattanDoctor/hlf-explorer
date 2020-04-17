@@ -14,10 +14,10 @@ import { AppSettings } from './src/AppSettings';
 
 async function generateDocs(application: INestApplication): Promise<void> {
     let options = new DocumentBuilder()
-        .setTitle('Coin Monitor API')
-        .setDescription('The coin monitor API description')
+        .setTitle('HLF Explorere API')
+        .setDescription('The hlf explorer API description')
         .setVersion('1.0')
-        .addTag('coinmonitor')
+        .addTag('hlf-explorer')
         .build();
     let document = SwaggerModule.createDocument(application, options);
     SwaggerModule.setup('api', application, document);

@@ -39,7 +39,6 @@ export class LedgerBlockTransaction implements ITransportFabricTransaction {
     public requestId: string;
     public requestName: string;
     public requestUserId: string;
-    public requestInternalLinkId: string;
 
     public responseErrorCode: number;
 

@@ -11,7 +11,7 @@ import { LedgerBlockEntity } from './LeggerBlockEntity';
 import { LedgerBlockTransaction } from '@hlf-explorer/common/ledger';
 
 @Entity()
-@Index(['hash', 'blockId', 'blockNumber', 'ledgerId', 'requestId', 'requestUserId', 'requestInternalLinkId'])
+@Index(['hash', 'blockId', 'blockNumber', 'ledgerId', 'requestId', 'requestUserId'])
 @Index(['hash', 'blockId'], { unique: true })
 export class LedgerBlockTransactionEntity implements LedgerBlockTransaction {
     // --------------------------------------------------------------------------
@@ -73,11 +73,6 @@ export class LedgerBlockTransactionEntity implements LedgerBlockTransaction {
     @IsOptional()
     @IsString()
     public requestUserId: string;
-
-    @Column({ name: 'request_internal_link_id', nullable: true })
-    @IsOptional()
-    @IsUUID()
-    public requestInternalLinkId: string;
 
     @Column({ name: 'response_error_code', nullable: true })
     @IsOptional()

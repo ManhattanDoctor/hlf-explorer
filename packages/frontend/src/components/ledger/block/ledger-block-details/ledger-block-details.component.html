@@ -25,6 +25,12 @@
         <span class="col-2" [innerHTML]="'block.events' | viTranslate"></span>
         <span class="col-10 mat-body-2"></span>
     </p>
+
+    <div class="mat-nav-list flex-grow-1 scroll-auto border-top" *ngIf="block.transactions?.length > 0">
+        <ledger-transaction [transaction]="item" *ngFor="let item of transactions?.collection; trackBy: transactions?.trackByFn; last as isLast"
+            class="mat-list-item mouse-active p-3 border-bottom" [class.border-bottom-0]="isLast" (click)="router.transactionOpen(item)"></ledger-transaction>
+    </div>
+
 </div>
 
 <div class="mat-nav-list flex-grow-1 scroll-auto" *ngIf="mode === 'transactions'">

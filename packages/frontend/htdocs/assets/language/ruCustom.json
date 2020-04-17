@@ -32,11 +32,13 @@
         "createdDate": "Дата создания",
         "transaction": {
             "uid": "UID",
+            "name": "Команда",
             "hash": "Хеш в леджере",
             "transaction": "Транзакция",
             "request": "Запрос",
             "response": "Ответ",
-            "error": "Ошибка выполнения",
+            "linkCommandId": "Основная команда",
+            "error": "Ошибка",
             "userId": "Пользователь",
             "algorithm": "Шифрование",
             "status": {

@@ -6,7 +6,7 @@
     "background_color": "#FFFFFF",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "http://coin.monitor/?utm_source=web_app_manifest",
+    "start_url": "http://hlf-explorer.com/?utm_source=web_app_manifest",
 	"icons":
 	[
 		{

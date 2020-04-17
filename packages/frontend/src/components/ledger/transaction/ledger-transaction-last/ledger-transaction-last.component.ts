@@ -26,7 +26,7 @@ export class LedgerTransactionLastComponent extends DestroyableContainer {
     public date: string;
     public userId: string;
     public status: string;
-    public isValid: boolean;
+    public isExecuted: boolean;
 
     public request: string;
     public response: string;
@@ -68,9 +68,9 @@ export class LedgerTransactionLastComponent extends DestroyableContainer {
             this.userId = value;
         }
 
-        value = transaction.isValid;
-        if (value !== this.isValid) {
-            this.isValid = value;
+        value = transaction.isExecuted;
+        if (value !== this.isExecuted) {
+            this.isExecuted = value;
         }
 
         value = transaction.isExecuted ? '✔' : '✘';

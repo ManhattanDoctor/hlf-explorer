@@ -24,8 +24,25 @@ export class LedgerBlocksLast extends MapCollection<LedgerBlock> {
 
         if (!_.isEmpty(items)) {
             this.addItems(items);
-            this.collection.sort(this.sortFunction);
         }
+    }
+
+    // --------------------------------------------------------------------------
+    //
+    //  Public Methods
+    //
+    // --------------------------------------------------------------------------
+
+    public add(item: LedgerBlock, isFirst?: boolean): LedgerBlock {
+        item = super.add(item, isFirst);
+        if (!_.isNil(item)) {
+            this.sort();
+        }
+        return item;
+    }
+
+    public sort(): void {
+        this.collection.sort(this.sortFunction);
     }
 
     // --------------------------------------------------------------------------

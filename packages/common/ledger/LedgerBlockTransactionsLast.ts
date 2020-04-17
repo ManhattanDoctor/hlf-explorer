@@ -24,8 +24,25 @@ export class LedgerBlockTransactionsLast extends MapCollection<LedgerBlockTransa
 
         if (!_.isEmpty(items)) {
             this.addItems(items);
-            this.collection.sort(this.sortFunction);
         }
+    }
+
+    // --------------------------------------------------------------------------
+    //
+    //  Public Methods
+    //
+    // --------------------------------------------------------------------------
+
+    public add(item: LedgerBlockTransaction, isFirst: boolean): LedgerBlockTransaction {
+        item = super.add(item, isFirst);
+        if (!_.isNil(item)) {
+            this.sort();
+        }
+        return item;
+    }
+
+    public sort(): void {
+        this.collection.sort(this.sortFunction);
     }
 
     // --------------------------------------------------------------------------

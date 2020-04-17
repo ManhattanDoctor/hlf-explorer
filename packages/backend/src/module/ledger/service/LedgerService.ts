@@ -44,7 +44,7 @@ export class LedgerService extends LoggerWrapper {
         item.name = name;
         item.blockHeight = 0;
         item.blockHeightParsed = 0;
-        item.blockFrequency = 10 * DateUtil.MILISECONDS_SECOND;
+        item.blockFrequency = 1 * DateUtil.MILISECONDS_SECOND;
 
         await this.database.ledgerSave(item);
         this.log(`Ledger "${name}" saved`);
@@ -63,21 +63,6 @@ export class LedgerService extends LoggerWrapper {
 
         let checker = new LedgerStateChecker(this.logger, this.transport, hlf);
         checker.start();
-
-        /*
-        console.log(
-            await this.database.ledgerBlock
-                .createQueryBuilder('block')
-                .innerJoinAndSelect('block.transactions', 'transactions')
-                .select()
-                .where('block.number = :number', { number: 24 })
-                .execute()
-        );
-        
-        // console.log(await this.database.ledgerBlock.findOne({ number: 24 }));
-        let block = await this.database.ledgerBlock.findOne({number: 24});
-        console.log(LedgerBlock.fromClass(block));
-        */
     }
 
     // --------------------------------------------------------------------------

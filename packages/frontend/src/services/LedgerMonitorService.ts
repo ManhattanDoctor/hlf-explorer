@@ -98,7 +98,9 @@ export class LedgerMonitorService extends Loadable<void, void> {
             return;
         }
 
-        let block = LedgerBlock.toClass(item.blockLast);
+
+        let block = LedgerBlock.toClass(ledger.blockLast);
+
         item.blockLast = block;
         item.blocksLast.add(block);
         item.transactionsLast.addItems(block.transactions);

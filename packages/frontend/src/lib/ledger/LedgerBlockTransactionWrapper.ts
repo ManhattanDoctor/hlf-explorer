@@ -23,13 +23,17 @@ export class LedgerBlockTransactionWrapper extends LedgerBlockTransaction {
     // --------------------------------------------------------------------------
 
     private parseJSON(data: any): string {
-        if (_.isObject(data)) {
-            data = JSON.stringify(data, null, 2);
-            data = TextHighlightUtil.text(data);
-            return data;
-        } else {
+        if (_.isNil(data)) {
+            return null;
+        }
+
+        if (!_.isObject(data)) {
             return TextHighlightUtil.text(data.toString());
         }
+
+        data = JSON.stringify(data, null, 2);
+        data = TextHighlightUtil.text(data);
+        return data;
     }
 
     // --------------------------------------------------------------------------
@@ -38,8 +42,20 @@ export class LedgerBlockTransactionWrapper extends LedgerBlockTransaction {
     //
     // --------------------------------------------------------------------------
 
+    public get name(): string {
+        return `${this.requestName} [${this.requestId}]`;
+    }
+
     public get isValid(): boolean {
         return this.validationCode === 0;
+    }
+
+    public get isHasRequest(): boolean {
+        return !_.isNil(this.request) && !_.isNil(this.request.request);
+    }
+
+    public get isHasResponse(): boolean {
+        return !_.isNil(this.response) && !_.isNil(this.response.response);
     }
 
     public get isError(): boolean {
@@ -51,7 +67,7 @@ export class LedgerBlockTransactionWrapper extends LedgerBlockTransaction {
     }
 
     public get requestData(): any {
-        return !_.isNil(this.request) ? this.parseJSON(this.request.request) : null;
+        return this.isHasRequest ? this.parseJSON(this.request.request) : null;
     }
 
     public get requestAlgorithm(): any {
@@ -59,7 +75,7 @@ export class LedgerBlockTransactionWrapper extends LedgerBlockTransaction {
     }
 
     public get responseData(): any {
-        return !_.isNil(this.response) ? this.parseJSON(this.response.response) : null;
+        return this.isHasResponse ? this.parseJSON(this.response.response) : null;
     }
 
     public get responseErrorMessage(): string {
@@ -68,11 +84,9 @@ export class LedgerBlockTransactionWrapper extends LedgerBlockTransaction {
         }
         let item = this.response.response;
         let value = `${item.message}: code ${item.code}`;
-        if(ObjectUtil.isJSON(item.details))
-        {
+        if (ObjectUtil.isJSON(item.details)) {
             value += `\n${this.parseJSON(JSON.parse(item.details))}`;
         }
-        console.log();
-        return value;;
+        return value;
     }
 }

@@ -96,7 +96,7 @@ export const imports: any[] = [
 
     // Vi
     VIComponentModule,
-    VICommonModule.forRoot({ languageOptions: { name: 'coin-monitor-language' }, themeOptions: { name: 'coin-monitor-theme' } }),
+    VICommonModule.forRoot({ languageOptions: { name: 'hlf-explorer-language' }, themeOptions: { name: 'hlf-explorer-theme' } }),
 
     // Router
     RouterModule.forRoot([
