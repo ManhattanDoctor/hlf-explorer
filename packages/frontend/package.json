@@ -23,7 +23,7 @@
         "@angular/platform-server": "8.2.14",
         "@angular/router": "8.2.14",
         "@fortawesome/fontawesome-free": "5.9.0",
-        "@ts-core/common": "^1.0.78",
+        "@ts-core/common": "^1.0.94",
         "@ts-core/frontend": "^1.0.22",
         "@ts-core/frontend-angular": "^8.0.37",
         "@types/numeral": "0.0.25",

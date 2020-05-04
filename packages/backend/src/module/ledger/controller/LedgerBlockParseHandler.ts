@@ -58,7 +58,7 @@ export class LedgerBlockParseHandler extends TransportCommandHandler<ILedgerBloc
                 item.requestId = request.id;
                 item.requestName = request.name;
                 if (!_.isNil(request.options)) {
-                    item.requestUserId = request.options.fabricUserId;
+                    item.requestUserId = request.options.userId;
                 }
             }
 

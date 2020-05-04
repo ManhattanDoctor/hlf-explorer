@@ -12,7 +12,9 @@
         "format:fix": "prettier --ignore-path ./.prettierignore --write \"packages/**/*.{ts,js,json}\" --loglevel warn"
     },
     "dependencies": {
-        "@hlf-explorer/common": "file:./packages/common"
+        "@hlf-explorer/common": "file:./packages/common",
+        "@ts-core/common": "^1.0.82",
+        "@ts-core/blockchain-fabric": "^1.0.25"
     },
     "devDependencies": {
         "@types/node": "12.12.18",
