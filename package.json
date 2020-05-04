@@ -12,7 +12,7 @@
         "format:fix": "prettier --ignore-path ./.prettierignore --write \"packages/**/*.{ts,js,json}\" --loglevel warn"
     },
     "dependencies": {
-        "@hlf-explorer/common": "file:./packages/common",
+        "@hlf-explorer/common": "file:./src/common",
         "@nestjs/common": "6.10.11",
         "@nestjs/core": "6.10.11",
         "@nestjs/jwt": "6.1.1",
