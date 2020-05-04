@@ -108,7 +108,7 @@ export class LedgerBlockListController extends DefaultController<LedgerBlockList
     }
 
     protected transform = async (value: LedgerBlockEntity): Promise<LedgerBlock> => {
-        let item = LedgerBlock.fromClass(value);
+        let item = TransformUtil.fromClass(value);
         item.rawData = null;
         return item;
     };

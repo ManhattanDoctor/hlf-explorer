@@ -89,7 +89,7 @@ export class LedgerMonitorService extends LoggerWrapper implements OnGatewayInit
             return;
         }
 
-        let block = LedgerBlock.toClass(event.block);
+        let block = TransformUtil.toClass(LedgerBlock, event.block);
         item.blockLast = block;
         item.blocksLast.add(block);
         this.namespace.emit(LedgerSocketEvent.LEDGER_UPDATED, { id: item.id, blockLast: event.block });
@@ -115,10 +115,7 @@ export class LedgerMonitorService extends LoggerWrapper implements OnGatewayInit
             // await this.guard.check(client);
             // console.log(LedgerInfo.fromClass(this.items.getFirst()));
             // console.log(this.items.getFirst().blocksLast.collection);
-            client.emit(
-                LedgerSocketEvent.LEDGERS,
-                this.items.collection.map(item => LedgerInfo.fromClass(item))
-            );
+            client.emit(LedgerSocketEvent.LEDGERS, TransformUtil.fromClassMany(this.items.collection));
         } catch (error) {
             client.emit(LedgerSocketEvent.EXCEPTION, ExtendedError.create(error));
             client.disconnect(true);

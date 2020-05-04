@@ -92,6 +92,6 @@ export class LedgerBlockGetController extends DefaultController<LedgerBlockGetRe
             conditions.hash = params.numberOrHash.toString();
         }
         let item = await this.database.ledgerBlock.findOne(conditions);
-        return !_.isNil(item) ? LedgerBlock.fromClass(item) : null;
+        return !_.isNil(item) ? TransformUtil.fromClass(item) : null;
     }
 }

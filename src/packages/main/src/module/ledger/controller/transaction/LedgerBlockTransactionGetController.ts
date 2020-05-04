@@ -104,6 +104,6 @@ export class LedgerBlockTransactionGetController extends DefaultController<Ledge
         }
 
         let item = await this.database.ledgerBlockTransaction.findOne(conditions);
-        return !_.isNil(item) ? LedgerBlockTransaction.fromClass(item) : null;
+        return !_.isNil(item) ? TransformUtil.fromClass(item) : null;
     }
 }
